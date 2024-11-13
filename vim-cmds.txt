@@ -1,0 +1,14 @@
+vim-cmd hostsvc/maintenance_mode_enter 	- Enter maintenance mode
+vim-cmd hostsvc/maintenance_mode_exit 	-  Exit maintenance mode
+
+vim-cmd vmsvc/getallvms 		- Gets the info of all VMs configured on the esxi hosts
+vim-cmd vmsvc/getstate <vm-id>		- Gets the power status of the virutal machine "Powered off | Powered On"
+vim-cmd vmsvc/power.on <vm-id>		- Power on the VM using the VM-ID
+vim-cmd vmsvc/power.off <vm-id>		- Power off the VM using the VM-ID
+vim-cmd vmsvc/power.reboot <vm-id>	- Reboot the VM using the VM-ID
+vim-cmd vmsvc/power.shutdown <vm-id>	- Reboot the VM using the VM-ID
+
+vim-cmd vmsvc/unregister <vm-id>	- Un-register the vm-id
+vim-cmd solo/register <vmx file>	- register using the VMX file
+
+

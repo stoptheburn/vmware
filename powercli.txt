@@ -1,0 +1,54 @@
+Get-PowerCLIVersion
+Get-Module
+Get-VICredentialStoreItem 						-> Get previously stored item from the store
+Connect-VIServer -Server <ip> -User <user> -Password <password> -SaveCredentials
+Connect-VIServer -Server <ip> -Credential $myCredentialsObject
+Connect-VIServer -Server <ip> -User <user> -Password <password>
+
+Get-VMHost 								-> Gets the esxi host information,ip,cpu,memory,version
+
+Get-VM 									-> Gets info of VMs installed on the Esxi host
+Start-VM -VM <vm_name>
+
+# Small script to power on vm and check boot - put this in a function and pass vm-name
+Start-vm -VM <vm-name> -runAsync
+$vm = get-vm <vm-name>
+Start-Sleep -Seconds 20;
+$vm  | Get-VMQuestion | Set-VMQuestion -DefaultOption -confirm:$false;
+do {
+    Start-Sleep -Seconds 20;
+    $vm = Get-VM $vm.name  # The new line that does the refresh.
+    $toolsStatus = $vm.extensionData.Guest.ToolsStatus;
+} while($toolsStatus -ne "toolsOK");
+
+# Keep VMs powered on
+Get-VM | where{$_.PowerState -eq 'PoweredOff}' | Start-VM -Confirm:$false
+
+#Stop-VM -VM <vm-name>
+
+# Get VM-Information
+Get-VM -Name <vm-name> | Format-List
+Get-VM | fl # List info of all VMs
+
+# Take a snapshot of the virtual machine
+New-Snapshot -VM <vm-name> -Description "Desc: " -Name vm-name-snapshot-timestamp 
+	# Script to do the same
+	Connect-VIServer -Server 192.168.0.1
+	Get-VM -Name ubuntu,win | New-Snapshot -Name test -Description vm-name-snapshot-timestamp 
+
+# Check Snapshot
+	# Script to do the same
+	Connect-VIServer -Server 192.168.0.1
+	Get-VM | Get-Snapshot | Select vm,name,Description,Created,SizeGB
+
+# Remove Snapshot
+	# Script to remove snapshot
+	Connect-VIServer -Server 192.168.0.1
+	Get-VM -Name Ubuntu,Win | Get-Snapshot | Remove-Snapshot
+
+
+
+	
+
+
+

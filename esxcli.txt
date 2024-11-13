@@ -1,0 +1,26 @@
+# network
+esxcli network ip interface ipv4 list 
+esxcli network ip interface ipv4 set -i vmk1 -I ip address -N subnet -t static	
+esxcli network ip interface ipv4 set –i vmknic -t static –g IPv4 gateway -I IPv4 address -N mask -> Sets a static IP of the interface
+esxcli network ip route ipv4 add 						-> Sets a route 
+esxcli network firewall get
+esxcli network firewall ruleset set --enabled true --ruleset-id=sshClient  	-> enable sshclient on the esxi host
+esxcli network ip dns server add --server=<server>				-> add a DNS IP address to esxi host /etc/resolv.conf
+esxcli system hostname set --host=<new_host_name>				-> Sets the hostname of the esxi host
+esxcli system hostname --domain=<mydomain>					-> Sets the search part of /etc/resolv.conf
+
+# Join a domain controller
+domainjoin-cli join <domain-fqdn> <AD_admin_username> 	-> Automatically lets a esxi server join a domain controller
+
+# vSAN
+esxcli vsan network list	-> Verify which VMkernel adapters are used for vSAN communication.
+esxcli vsan storage list	-> List storage disks claimed by vSAN.
+esxcli vsan cluster get		-> Get vSAN cluster information.
+esxcli vsan health		-> Get vSAN cluster health status.
+esxcli vsan debug		-> Get vSAN cluster debug information.
+esxcli vsan debug disk		-> Debug vSAN physical disks.
+esxcli vsan debug object	-> Debug vSAN objects.
+esxcli vsan debug resync	-> Debug vSAN resyncing objects.
+esxcli vsan debug controller	-> Debug vSAN disk controllers.
+esxcli vsan debug limit		-> Debug vSAN limits.
+esxcli vsan debug vmdk		-> Debug vSAN VMDKs.
