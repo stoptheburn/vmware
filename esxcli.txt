@@ -8,6 +8,7 @@ esxcli network firewall ruleset set --enabled true --ruleset-id=sshClient  	-> e
 esxcli network ip dns server add --server=<server>				-> add a DNS IP address to esxi host /etc/resolv.conf
 esxcli system hostname set --host=<new_host_name>				-> Sets the hostname of the esxi host
 esxcli system hostname --domain=<mydomain>					-> Sets the search part of /etc/resolv.conf
+domainjoin-cli join <domain-fqdn> <AD_admin_username>				-> Domain join command 
 
 # Join a domain controller
 domainjoin-cli join <domain-fqdn> <AD_admin_username> 	-> Automatically lets a esxi server join a domain controller

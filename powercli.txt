@@ -1,6 +1,8 @@
 Get-PowerCLIVersion
 Get-Module
+New-VICredentialStoreItem
 Get-VICredentialStoreItem 						-> Get previously stored item from the store
+Remove-VICredentialStoreItem 						-> Remove previously stored item from the store
 Connect-VIServer -Server <ip> -User <user> -Password <password> -SaveCredentials
 Connect-VIServer -Server <ip> -Credential $myCredentialsObject
 Connect-VIServer -Server <ip> -User <user> -Password <password>
@@ -45,10 +47,4 @@ New-Snapshot -VM <vm-name> -Description "Desc: " -Name vm-name-snapshot-timestam
 	# Script to remove snapshot
 	Connect-VIServer -Server 192.168.0.1
 	Get-VM -Name Ubuntu,Win | Get-Snapshot | Remove-Snapshot
-
-
-
-	
-
-
 

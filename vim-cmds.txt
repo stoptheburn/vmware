@@ -9,6 +9,7 @@ vim-cmd vmsvc/power.reboot <vm-id>	- Reboot the VM using the VM-ID
 vim-cmd vmsvc/power.shutdown <vm-id>	- Reboot the VM using the VM-ID
 
 vim-cmd vmsvc/unregister <vm-id>	- Un-register the vm-id
+vim-cmd vmsvc/register <vmx file>	- register using the VMX file
 vim-cmd solo/register <vmx file>	- register using the VMX file
 
 
